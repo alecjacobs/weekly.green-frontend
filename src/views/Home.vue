@@ -1,5 +1,12 @@
 <template>
-  <CashFlowGraph :height="150" :chartData="cashFlowHistory" :options="options" />
+  <v-container flex><v-layout>
+    <v-flex xs6>
+      <CashFlowGraph :height="150" :chartData="cashFlowHistory" :options="options" />
+    </v-flex>
+    <v-flex xs6>
+      <CashFlowGraph :height="150" :chartData="cashFlowHistory" :options="options" />
+    </v-flex>
+  </v-layout></v-container>
 </template>
 
 <script>
