@@ -1,5 +1,5 @@
 <template>
-  <CashFlowGraph :height="150" :chartData="cashFlowHistory" />
+  <CashFlowGraph :height="150" :chartData="cashFlowHistory" :options="options" />
 </template>
 
 <script>
@@ -13,21 +13,20 @@
     },
     data () {
       return {
-        cashFlowHistory: {}
+        cashFlowHistory: {},
+        options: {}
       }
     },
     mounted () {
       axios.get('https://weekly-green.herokuapp.com/yodlee_mock.json').then(({ data }) => {
         let day = -1;
         let bals = [];
-        let days = [];
         data.transactions.forEach((transaction) => {
           const { bal, date } = transaction;
           let newDay = moment(date).day();
           if (newDay !== day) {
             day = newDay;
-            days.push(moment(transaction.date).toDate());
-            bals.push({ y: transaction.bal + 1000.0, t: date });
+            bals.push({ y: bal + 1000.0, t: date });
           }
         });
 
@@ -39,6 +38,34 @@
               data: bals
             }
           ]
+        };
+
+        this.options = {
+          legend: {
+            display: false
+          },
+          scales: {
+            xAxes: [{
+              type: 'time',
+              display: true,
+              scaleLabel: {
+                display: false
+              },
+              ticks: {
+                major: {
+                  fontStyle: 'bold',
+                  fontColor: '#FF0000'
+                }
+              }
+            }],
+            yAxes: [{
+              display: true,
+              scaleLabel: {
+                display: true,
+                labelString: 'Your Balance'
+              }
+            }]
+          }
         };
       });
     }
