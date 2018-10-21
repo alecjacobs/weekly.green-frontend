@@ -12,7 +12,7 @@ export default {
         labels: [],
         datasets: [
           {
-            label: 'Some Data!',
+            label: 'Transaction History',
             backgroundColor: '#7af49b',
             data: []
           }
@@ -34,16 +34,15 @@ export default {
         let newDay = moment(date).day();
         if (newDay !== day) {
           day = newDay;
-          days.push(moment(transaction.date).toDate())
-          bals.push(transaction.bal + 1000.0);
+          days.push(moment(transaction.date).toDate());
+          bals.push({ y: transaction.bal + 1000.0, t: date });
         }
       });
 
       this.chartData = {
-        labels: days,
         datasets: [
           {
-            label: 'Some Data!',
+            label: 'Transaction History',
             backgroundColor: '#7af49b',
             data: bals
           }
