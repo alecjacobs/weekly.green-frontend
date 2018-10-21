@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app dark>
     <v-toolbar app>
       <v-toolbar-title class="headline">
         <span>weekly.green</span>
@@ -22,11 +22,6 @@ export default {
   name: 'App',
   components: {
     Home
-  },
-  data () {
-    return {
-      //
-    }
   }
 }
 </script>

@@ -1,18 +1,29 @@
 <script>
-import VueCharts from 'vue-chartjs'
-import { Line } from 'vue-chartjs'
+import VueChart from 'vue-chartjs'
+import moment from 'moment'
 
 export default {
-  extends: Line,
+  extends: VueChart.Line,
   mounted () {
-    // Overwriting base render method with actual data.
+    Chart.scaleService.updateScaleDefaults('linear', { ticks: { min: 0 }})
+
+    let nextTwoWeeksOfDates = [...Array(14)].map((_, i) => {
+      return moment().add(i, 'days').format("dddd")
+    })
+
+    let startingBalance = 500
+
+    let nextTwoWeeksOfBalances = [...Array(14)].map((_, i) => {
+      return startingBalance + Math.floor(Math.random() * 200)
+    })
+
     this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      labels: nextTwoWeeksOfDates,
       datasets: [
         {
           label: 'Some Data!',
-          backgroundColor: '#f87979',
-          data: [40, 20, 12, 39, 10, 40, 39, 80, 40, 20, 12, 11]
+          backgroundColor: '#7af49b',
+          data: nextTwoWeeksOfBalances
         }
       ]
     })
@@ -21,5 +32,4 @@ export default {
 </script>
 
 <style>
-
 </style>
