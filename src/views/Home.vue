@@ -1,5 +1,5 @@
 <template>
-  <CashFlowGraph />
+  <CashFlowGraph :width="400" :height="200" />
 </template>
 
 <script>
