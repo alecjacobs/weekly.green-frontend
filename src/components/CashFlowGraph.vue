@@ -12,7 +12,7 @@ export default {
         labels: [],
         datasets: [
           {
-            label: 'Some Data!',
+            label: 'Transaction History',
             backgroundColor: '#7af49b',
             data: []
           }
@@ -34,16 +34,15 @@ export default {
         let newDay = moment(date).day();
         if (newDay !== day) {
           day = newDay;
-          days.push(moment(transaction.date).toDate())
-          bals.push(transaction.bal);
+          days.push(moment(transaction.date).toDate());
+          bals.push({ y: transaction.bal + 1000.0, t: date });
         }
       });
 
       this.chartData = {
-        labels: days,
         datasets: [
           {
-            label: 'Some Data!',
+            label: 'Transaction History',
             backgroundColor: '#7af49b',
             data: bals
           }
@@ -51,16 +50,11 @@ export default {
       };
     });
 
-    let nextTwoWeeksOfDates = [...Array(14)].map((_, i) => {
-      return moment().add(i, 'days').format("dddd")
-    })
-
     this.renderChart(this.chartData, {
-			title: {
-				display: true,
-				text: 'Chart.js Time Point Data'
-			},
-			scales: {
+      legend: {
+        display: false
+      },
+      scales: {
 				xAxes: [{
 					type: 'time',
 					display: true,
