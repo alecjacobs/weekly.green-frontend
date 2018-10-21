@@ -1,13 +1,13 @@
 <template>
-  <HelloWorld />
+  <CashFlowGraph />
 </template>
 
 <script>
-  import HelloWorld from '../components/HelloWorld'
+  import CashFlowGraph from '../components/CashFlowGraph'
 
   export default {
     components: {
-      HelloWorld
+      CashFlowGraph
     }
   }
 </script>
