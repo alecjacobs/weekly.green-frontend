@@ -3,9 +3,9 @@
 </template>
 
 <script>
-  import axios from 'axios'
-  import moment from 'moment'
   import CashFlowGraph from '../components/CashFlowGraph'
+  import moment from 'moment'
+  import axios from 'axios'
 
   export default {
     components: {
