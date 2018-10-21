@@ -36,7 +36,7 @@
           if (newDay !== day) {
             day = newDay;
             bals.push({ y: bal + 1000.0, t: moment(date) });
-            future.push({ y: bal + 1000.0, t: moment(date) });
+            future.push({ y: bal + 1000.0, t: moment(date).add(90, 'days') });
           }
         });
 
@@ -50,7 +50,7 @@
               data: future.map(({ y, t }) => {
                 i = i + 1;
                 b = b + (Math.random() - 0.5) * 50.0;
-                return { y: b, t: t };
+                return { y: b, t: t.add(i, 'days') };
               })
             },
             {
@@ -59,7 +59,7 @@
               data: future.map(({ y, t }) => {
                 i = i + 1;
                 b = b + (Math.random() - 0.5) * 40.0;
-                return { y: b, t: t };
+                return { y: b, t: t.add(i, 'days') };
               })
             },
             {
@@ -68,7 +68,7 @@
               data: future.map(({ y, t }) => {
                 i = i + 1;
                 b = b + (Math.random() - 0.5) * 30.0;
-                return { y: b, t: t };
+                return { y: b, t: t.add(i, 'days') };
               })
             }
           ]
