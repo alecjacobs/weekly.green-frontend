@@ -1,4 +1,4 @@
-# weekly.green-frontend
+# frontend for [weekly.green](https://weekly.green/) 
 
 ## Project setup
 ```
